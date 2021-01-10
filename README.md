@@ -57,7 +57,7 @@ Open `local.settings.json` which has the local debug connection string settings.
 
 Open `Demo.cs` and update `Connection = ""` with the connection string value for your Azure Storage account:
 
-**local.settings.json**
+**Demo.cs**
 ```csharp
 [FunctionName("Demo")]
         public static void Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")]string myQueueItem, ILogger log)
