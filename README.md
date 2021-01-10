@@ -174,7 +174,7 @@ Initially after deploy and with an empty queue you should see 0 pods running.
 kubectl get pods -n demo 
 ```
 
-By default, for a ScaledObject a `pollingInterval` equals 30 seconds, and `cooldownPeriod` equals 300 seconds, meaning that the queue will be polled each 30 seconds and your active scaled object (job) would be stopped in 5 minutes, if there are no messages in the queue. In our fine-tuning we have set queueLength to 1, so the auto-autoscaling should be triggred on average for each queue message. Be default, the value is 5.
+By default, for a ScaledObject a `pollingInterval` equals 30 seconds, and `cooldownPeriod` equals 300 seconds, meaning that the queue will be polled each 30 seconds and your active scaled object (job) would be stopped in 5 minutes, if there are no messages in the queue. In our fine-tuning we have set queueLength to 1, so the auto-scaling should be triggred on average for each queued message. Be default, the value is 5.
 
 Start watching the auto-scaling:
 
@@ -182,7 +182,8 @@ Start watching the auto-scaling:
 kubectl get pods -w
 ```
 
-Add 5-10 queue message to the queue. KEDA will detect the event and add a pod.  
+Add 5-10 queue messages to the queue. KEDA will detect the events and add pods.
+Please, notice that `maxReplicaCount` limits the number of active jobs.
 
 ```cli
 NAME                        READY   STATUS    RESTARTS   AGE
