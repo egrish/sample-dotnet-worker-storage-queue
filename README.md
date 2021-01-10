@@ -179,7 +179,7 @@ By default, for a ScaledObject a `pollingInterval` equals 30 seconds, and `coold
 Start watching the auto-scaling:
 
 ```cli
-kubectl get pods -w
+kubectl get pods -w -n demo
 ```
 
 Add 5-10 queue messages to the queue. KEDA will detect the events and add pods.
